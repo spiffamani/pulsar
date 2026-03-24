@@ -3,6 +3,7 @@ import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 import { config } from "./config.js";
+import { fetchContractSpec, fetchContractSpecSchema } from "./tools/fetch_contract_spec.js";
 
 /**
  * Initialize the pulsar MCP server.
@@ -47,6 +48,26 @@ class PulsarServer {
             required: ["account_id"],
           },
         },
+        {
+          name: "fetch_contract_spec",
+          description:
+            "Fetch the ABI/interface spec of a deployed Soroban contract. Returns decoded function signatures, parameter types, and emitted event schemas.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              contract_id: {
+                type: "string",
+                description: "The Soroban contract address (C...)",
+              },
+              network: {
+                type: "string",
+                enum: ["mainnet", "testnet", "futurenet", "custom"],
+                description: "Override the active network for this call.",
+              },
+            },
+            required: ["contract_id"],
+          },
+        },
       ],
     }));
 
@@ -63,6 +84,15 @@ class PulsarServer {
             },
           ],
         };
+      }
+
+      if (name === "fetch_contract_spec") {
+        const parsed = fetchContractSpecSchema.safeParse(args);
+        if (!parsed.success) {
+          throw new Error(`Invalid input: ${JSON.stringify(parsed.error.format())}`);
+        }
+        const result = await fetchContractSpec(parsed.data);
+        return { content: [{ type: "text", text: JSON.stringify(result) }] };
       }
 
       throw new Error(`Tool not found: ${name}`);
