@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
+import { CallToolRequestSchema, ListToolsRequestSchema, ErrorCode, McpError } from "@modelcontextprotocol/sdk/types.js";
 import { config } from "./config.js";
 import { fetchContractSpec, fetchContractSpecSchema } from "./tools/fetch_contract_spec.js";
 import { submitTransaction } from './tools/submit_transaction.js';
@@ -11,6 +11,8 @@ import {
   SubmitTransactionInputSchema,
   SimulateTransactionInputSchema,
 } from './schemas/tools.js';
+import logger from './logger.js';
+import { PulsarError, PulsarErrorCode, PulsarNetworkError, PulsarValidationError } from './errors.js';
 
 /**
  * Initialize the pulsar MCP server.
@@ -139,6 +141,55 @@ class PulsarServer {
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const { name, arguments: args } = request.params;
 
+      try {
+        logger.debug({ tool: name, arguments: args }, `Executing tool: ${name}`);
+
+        switch (name) {
+          case 'get_account_balance': {
+            const parsed = GetAccountBalanceInputSchema.safeParse(args);
+            if (!parsed.success) {
+              throw new PulsarValidationError(`Invalid input for get_account_balance`, parsed.error.format());
+            }
+            // TODO: Implement actual get_account_balance logic
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify({
+                    message: 'get_account_balance is not yet implemented',
+                    input: parsed.data,
+                  }),
+                },
+              ],
+            };
+          }
+
+          case 'fetch_contract_spec': {
+            const parsed = fetchContractSpecSchema.safeParse(args);
+            if (!parsed.success) {
+              throw new PulsarValidationError(`Invalid input for fetch_contract_spec`, parsed.error.format());
+            }
+            const result = await fetchContractSpec(parsed.data);
+            return { content: [{ type: "text", text: JSON.stringify(result) }] };
+          }
+
+          case 'submit_transaction': {
+            const parsed = SubmitTransactionInputSchema.safeParse(args);
+            if (!parsed.success) {
+              throw new PulsarValidationError(`Invalid input for submit_transaction`, parsed.error.format());
+            }
+            const result = await submitTransaction(parsed.data);
+            return {
+              content: [{ type: 'text', text: JSON.stringify(result) }],
+            };
+          }
+
+          default:
+            throw new McpError(ErrorCode.MethodNotFound, `Tool not found: ${name}`);
+        }
+      } catch (error) {
+        return this.handleToolError(error, name);
+      }
       if (name === 'get_account_balance') {
         const parsed = GetAccountBalanceInputSchema.safeParse(args);
         if (!parsed.success) {
@@ -193,16 +244,58 @@ class PulsarServer {
     });
   }
 
+  private handleToolError(error: unknown, toolName: string) {
+    let pulsarError: PulsarError;
+
+    if (error instanceof PulsarError) {
+      pulsarError = error;
+    } else if (error instanceof McpError) {
+      // Pass through MCP errors directly if they are already well-formed
+      throw error;
+    } else {
+      // Convert unknown errors to PulsarNetworkError as per requirements
+      pulsarError = new PulsarNetworkError(
+        error instanceof Error ? error.message : String(error),
+        { originalError: error }
+      );
+    }
+
+    logger.error(
+      {
+        tool: toolName,
+        errorCode: pulsarError.code,
+        error: pulsarError.message,
+        details: pulsarError.details,
+      },
+      `Error executing tool ${toolName}`
+    );
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({
+            status: 'error',
+            error_code: pulsarError.code,
+            message: pulsarError.message,
+            details: pulsarError.details,
+          }),
+        },
+      ],
+      isError: true,
+    };
+  }
+
   private handleErrors() {
     this.server.onerror = (error) => {
-      console.error(`[MCP Error] ${error.message}`);
+      logger.error({ error }, '[MCP Error]');
     };
   }
 
   async run() {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
-    console.error(
+    logger.info(
       `pulsar MCP server v1.0.0 is running on ${config.stellarNetwork}...`,
     );
   }
@@ -210,7 +303,7 @@ class PulsarServer {
 
 const pulsar = new PulsarServer();
 pulsar.run().catch((error) => {
-  console.error('❌ Fatal error in pulsar server:', error);
+  logger.fatal({ error }, '❌ Fatal error in pulsar server');
   process.exit(1);
 });
 

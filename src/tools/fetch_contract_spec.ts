@@ -4,6 +4,8 @@ import { runStellarCli } from "../services/stellar-cli.js";
 import { getRpcUrl } from "../services/soroban-rpc.js";
 import { config } from "../config.js";
 
+import { PulsarValidationError } from "../errors.js";
+
 export const fetchContractSpecSchema = z.object({
   contract_id: ContractIdSchema,
   network: z
@@ -61,11 +63,12 @@ export async function fetchContractSpec(
   try {
     raw = JSON.parse(stdout.trim());
   } catch {
-    throw new Error(`Failed to parse stellar CLI output as JSON: ${stdout.slice(0, 200)}`);
+    throw new PulsarValidationError(`Failed to parse stellar CLI output as JSON`, { stdout: stdout.slice(0, 200) });
   }
 
   return parseCliSpec(raw, input.contract_id, network);
 }
+
 
 // ---------------------------------------------------------------------------
 // Parse the CLI JSON output into our typed response shape
