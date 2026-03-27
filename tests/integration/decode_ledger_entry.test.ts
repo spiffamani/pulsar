@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { expect, it } from 'vitest';
 
 import { decodeLedgerEntry } from '../../src/services/xdr.js';
+
 import { describeIfIntegration, TESTNET_HORIZON_URL } from './setup.js';
 
 /**

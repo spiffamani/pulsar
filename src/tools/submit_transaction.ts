@@ -6,11 +6,10 @@ import {
   FeeBumpTransaction,
   TransactionBuilder,
 } from "@stellar/stellar-sdk";
-import { z } from "zod";
+
 import { config } from "../config.js";
 import {
   SubmitTransactionInputSchema,
-  SubmitTransactionInput,
 } from "../schemas/tools.js";
 import type { McpToolHandler } from "../types.js";
 import logger from "../logger.js";

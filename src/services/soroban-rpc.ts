@@ -1,6 +1,6 @@
 import { SorobanRpc } from "@stellar/stellar-sdk";
-import { config } from "../config.js";
 
+import { config } from "../config.js";
 import { PulsarValidationError } from "../errors.js";
 
 const NETWORK_RPC_URLS: Record<string, string> = {

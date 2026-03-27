@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { simulateTransaction } from "../../src/tools/simulate_transaction.js";
 import { SorobanRpc, TransactionBuilder, xdr } from "@stellar/stellar-sdk";
+
+import { simulateTransaction } from "../../src/tools/simulate_transaction.js";
 
 // Mock the services
 vi.mock("../../src/services/soroban-rpc.js", () => ({

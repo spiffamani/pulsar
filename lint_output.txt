@@ -1,0 +1,53 @@
+[STARTED] Backing up original state...
+[COMPLETED] Backed up original state in git stash (942510a)
+[STARTED] Hiding unstaged changes to partially staged files...
+[COMPLETED] Hiding unstaged changes to partially staged files...
+[STARTED] Running tasks for staged files...
+[STARTED] package.json — 9 files
+[STARTED] *.ts — 7 files
+[STARTED] eslint --fix
+[FAILED] eslint --fix [FAILED]
+[FAILED] eslint --fix [FAILED]
+[COMPLETED] Running tasks for staged files...
+[STARTED] Applying modifications from tasks...
+[SKIPPED] Skipped because of errors from tasks.
+[STARTED] Restoring unstaged changes...
+[SKIPPED] Skipped because of errors from tasks.
+[STARTED] Reverting to original state because of errors...
+[COMPLETED] Reverting to original state because of errors...
+[STARTED] Cleaning up temporary files...
+[COMPLETED] Cleaning up temporary files...
+
+✖ eslint --fix:
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/index.ts
+   17:23  error  'PulsarErrorCode' is defined but never used  @typescript-eslint/no-unused-vars
+  205:7   error  Unreachable code                             no-unreachable
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/get_account_balance.ts
+   4:3   error    'GetAccountBalanceInput' is defined but never used  @typescript-eslint/no-unused-vars
+  45:56  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  65:17  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/get_account_balance.test.ts
+   1:10  error    'describe' is defined but never used      @typescript-eslint/no-unused-vars
+  26:7   warning  Unexpected console statement              no-console
+  34:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/setup.ts
+  41:26  error    'fetch' is not defined        no-undef
+  46:7   warning  Unexpected console statement  no-console
+  52:3   warning  Unexpected console statement  no-console
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/get_account_balance.test.ts
+    5:10  error    'PulsarNetworkError' is defined but never used  @typescript-eslint/no-unused-vars
+   13:19  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   40:77  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   63:12  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   84:12  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   92:15  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+  100:17  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+  109:15  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+
+✖ 20 problems (6 errors, 14 warnings)

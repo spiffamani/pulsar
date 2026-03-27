@@ -1,10 +1,11 @@
-import { describe, expect, it, beforeAll } from 'vitest';
+import { expect, it, beforeAll } from 'vitest';
+
+import { getAccountBalance } from '../../src/tools/get_account_balance.js';
 
 import {
   describeIfIntegration,
   fundWithFriendbot,
   TEST_ACCOUNT_PUBLIC_KEY,
-  TESTNET_HORIZON_URL,
 } from './setup.js';
 
 /**
@@ -27,30 +28,29 @@ describeIfIntegration('get_account_balance (Integration)', () => {
   });
 
   it('should fetch account balance from testnet', async () => {
-    // Use Horizon REST API directly to verify account exists
-    const response = await fetch(`${TESTNET_HORIZON_URL}/accounts/${TEST_ACCOUNT_PUBLIC_KEY}`);
+    const result = (await getAccountBalance({
+      account_id: TEST_ACCOUNT_PUBLIC_KEY,
+      network: 'testnet'
+    })) as any;
 
-    expect(response.ok).toBe(true);
+    expect(result.account_id).toBe(TEST_ACCOUNT_PUBLIC_KEY);
+    expect(result.balances).toBeDefined();
+    expect(Array.isArray(result.balances)).toBe(true);
 
-    const account = await response.json();
-
-    expect(account).toHaveProperty('account_id', TEST_ACCOUNT_PUBLIC_KEY);
-    expect(account).toHaveProperty('balances');
-    expect(Array.isArray(account.balances)).toBe(true);
-
-    // Should have at least XLM balance
-    const xlmBalance = account.balances.find(
-      (b: { asset_type: string }) => b.asset_type === 'native'
+    // Should have at least XLM balance (native)
+    const xlmBalance = result.balances.find(
+      (b: any) => b.asset_type === 'native'
     );
     expect(xlmBalance).toBeDefined();
-    expect(parseFloat(xlmBalance.balance)).toBeGreaterThan(0);
+    expect(parseFloat(xlmBalance!.balance)).toBeGreaterThan(0);
   });
 
-  it('should return 404 for non-existent account', async () => {
+  it('should return error for non-existent account', async () => {
     const nonExistentKey = 'GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWHG';
 
-    const response = await fetch(`${TESTNET_HORIZON_URL}/accounts/${nonExistentKey}`);
-
-    expect(response.status).toBe(404);
+    await expect(getAccountBalance({ 
+      account_id: nonExistentKey,
+      network: 'testnet'
+    })).rejects.toThrow("Account not found — it may not be funded yet");
   });
 });

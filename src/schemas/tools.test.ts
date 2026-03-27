@@ -4,6 +4,7 @@
  */
 
 import { describe, it, expect } from "vitest";
+
 import {
   GetAccountBalanceInputSchema,
   SubmitTransactionInputSchema,
@@ -88,8 +89,6 @@ describe("GetAccountBalanceInputSchema", () => {
 
 describe("SubmitTransactionInputSchema", () => {
   const validXdr = "AAAAAgAAAABvalidXDRbase64==";
-  const validPubKey =
-    "GABCDEFGHJKMNPQRSTUVWXYZ234567ABCDEFGHJKMNPQRSTUVWXYZ234";
 
   it("accepts minimal input with just XDR", () => {
     const input = { xdr: validXdr };

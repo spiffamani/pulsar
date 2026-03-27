@@ -1,0 +1,92 @@
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/config.ts
+  29:3  warning  Unexpected console statement  no-console
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/errors.ts
+  13:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  22:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  29:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  36:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/schemas/tools.test.ts
+  92:9  error  'validPubKey' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/get_account_balance.ts
+  44:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  64:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/simulate_transaction.ts
+   15:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   79:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   99:69  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  100:71  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  106:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  108:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  108:80  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:86  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  119:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  122:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/submit_transaction.test.ts
+  1:48  error  'afterEach' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/submit_transaction.ts
+   9:10  error  'z' is defined but never used                       @typescript-eslint/no-unused-vars
+  14:3   error  'SubmitTransactionInput' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/decode_ledger_entry.test.ts
+  1:10  error  'describe' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/fetch_contract_spec.test.ts
+   1:10  error    'describe' is defined but never used  @typescript-eslint/no-unused-vars
+  43:7   warning  Unexpected console statement          no-console
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/get_account_balance.test.ts
+   1:10  error    'describe' is defined but never used      @typescript-eslint/no-unused-vars
+  26:7   warning  Unexpected console statement              no-console
+  34:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/setup.ts
+  46:7  warning  Unexpected console statement  no-console
+  52:3  warning  Unexpected console statement  no-console
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/simulate_transaction.test.ts
+  1:10  error  'describe' is defined but never used                 @typescript-eslint/no-unused-vars
+  6:3   error  'TEST_ACCOUNT_PUBLIC_KEY' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/submit_transaction.test.ts
+  1:10  error  'describe' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/fetch_contract_spec.test.ts
+  3:1  error  There should be no empty line within import group  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/get_account_balance.test.ts
+    5:10  error    'PulsarNetworkError' is defined but never used  @typescript-eslint/no-unused-vars
+   13:19  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   40:77  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   63:12  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   84:12  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+   92:15  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+  100:17  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+  109:15  warning  Unexpected any. Specify a different type        @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/simulate_transaction.test.ts
+    4:1   error    There should be no empty line within import group                                                                    import/order
+   12:17  warning  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   29:19  warning  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   60:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+   78:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+   80:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+   95:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+   97:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+   99:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  100:24  warning  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/xdr.test.ts
+  10:1  error  `child_process` import should occur before import of `vitest`  import/order
+
+✖ 55 problems (20 errors, 35 warnings)
+

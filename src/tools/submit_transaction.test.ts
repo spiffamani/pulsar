@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // ---------------------------------------------------------------------------
 // We mock the config module so we can control stellarSecretKey per test.
@@ -66,8 +66,9 @@ vi.mock("@stellar/stellar-sdk", async () => {
 // ---------------------------------------------------------------------------
 // Import AFTER mocks are set up
 // ---------------------------------------------------------------------------
-import { submitTransaction } from "./submit_transaction.js";
 import { config } from "../config.js";
+
+import { submitTransaction } from "./submit_transaction.js";
 
 // ---------------------------------------------------------------------------
 // Tests
@@ -91,6 +92,7 @@ describe("submitTransaction", () => {
       xdr: FAKE_XDR,
       sign: true,
       wait_for_result: false,
+      wait_timeout_ms: 30_000,
     });
 
     expect(result).toMatchObject({
@@ -122,6 +124,7 @@ describe("submitTransaction", () => {
       xdr: FAKE_XDR,
       sign: false,
       wait_for_result: false,
+      wait_timeout_ms: 30_000,
     });
 
     expect(result).toMatchObject({
@@ -191,6 +194,7 @@ describe("submitTransaction", () => {
       xdr: FAKE_XDR,
       sign: false,
       wait_for_result: false,
+      wait_timeout_ms: 30_000,
     });
 
     expect(result).toMatchObject({
@@ -255,6 +259,7 @@ describe("submitTransaction", () => {
       xdr: FAKE_XDR,
       sign: true,
       wait_for_result: false,
+      wait_timeout_ms: 30_000,
     });
 
     expect(mockSign).toHaveBeenCalledOnce();

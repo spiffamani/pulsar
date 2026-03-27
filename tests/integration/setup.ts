@@ -14,7 +14,7 @@ export const RUN_INTEGRATION_TESTS = process.env.RUN_INTEGRATION_TESTS === 'true
 // This is a funded testnet account that will be created/funded via Friendbot
 export const TEST_ACCOUNT_PUBLIC_KEY =
   process.env.INTEGRATION_TEST_PUBLIC_KEY ||
-  'GAA2X3CRDBHCBK4KZ7Q5MZ7CJFS7K3LYKX3LKF2Q4LHMVZ7MNTB6UQH';
+  'GBV3Y3CRDBHCBK4KZ7Q5MZ7CJFS7K3LYKX3LKF2Q4LHMVZ7MNTB6UQHP';
 
 // Testnet USDC SAC (Stellar Asset Contract) contract ID
 export const TESTNET_USDC_CONTRACT_ID =

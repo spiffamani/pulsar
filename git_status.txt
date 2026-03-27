@@ -1,0 +1,19 @@
+On branch feature/get-account-balance
+Your branch is up to date with 'origin/feature/get-account-balance'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   integration_test_output.txt
+	modified:   src/index.ts
+	modified:   src/schemas/tools.ts
+	new file:   src/services/horizon.ts
+	new file:   src/tools/get_account_balance.ts
+	new file:   test_output.txt
+	modified:   tests/integration/get_account_balance.test.ts
+	modified:   tests/integration/setup.ts
+	new file:   tests/unit/get_account_balance.test.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	git_status.txt
+

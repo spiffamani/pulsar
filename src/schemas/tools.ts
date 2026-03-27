@@ -7,6 +7,7 @@
  */
 
 import { z } from "zod";
+
 import {
   StellarPublicKeySchema,
   ContractIdSchema,
@@ -24,6 +25,8 @@ import {
 export const GetAccountBalanceInputSchema = z.object({
   account_id: StellarPublicKeySchema,
   network: NetworkSchema.optional(),
+  asset_code: z.string().optional(),
+  asset_issuer: StellarPublicKeySchema.optional(),
 });
 
 export type GetAccountBalanceInput = z.infer<

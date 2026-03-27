@@ -1,0 +1,398 @@
+
+> pulsar@1.0.0 test:integration
+> RUN_INTEGRATION_TESTS=true vitest run tests/integration tests/integration/get_account_balance.test.ts
+
+
+[1m[46m RUN [49m[22m [36mv4.1.1 [39m[90m/home/edohwares/Desktop/Room/drips/pulsar[39m
+
+ [31m❯[39m tests/integration/decode_ledger_entry.test.ts [2m([22m[2m2 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 5011[2mms[22m[39m
+[31m     [31m×[31m should decode a real ledger entry from testnet[39m[33m 5007[2mms[22m[39m
+     [32m✓[39m should handle invalid XDR gracefully[32m 2[2mms[22m[39m
+ [31m❯[39m tests/integration/simulate_transaction.test.ts [2m([22m[2m2 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 6801[2mms[22m[39m
+[31m     [31m×[31m should simulate a simple payment transaction[39m[33m 5006[2mms[22m[39m
+[31m     [31m×[31m should get network information from testnet[39m[33m 1790[2mms[22m[39m
+ [31m❯[39m tests/integration/fetch_contract_spec.test.ts [2m([22m[2m2 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 6872[2mms[22m[39m
+[31m     [31m×[31m should fetch USDC contract spec from testnet[39m[33m 5008[2mms[22m[39m
+[31m     [31m×[31m should verify USDC contract exists on testnet[39m[33m 1859[2mms[22m[39m
+[90mstdout[2m | tests/integration/get_account_balance.test.ts[2m > [22m[2mget_account_balance (Integration)
+[22m[39mAccount GAA2X3CRDBHCBK4KZ7Q5MZ7CJFS7K3LYKX3LKF2Q4LHMVZ7MNTB6UQH may already be funded
+
+ [31m❯[39m tests/integration/submit_transaction.test.ts [2m([22m[2m3 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 8302[2mms[22m[39m
+[31m     [31m×[31m should get fee stats from testnet[39m[33m 5008[2mms[22m[39m
+[31m     [31m×[31m should get latest ledger from testnet[39m[33m 1850[2mms[22m[39m
+     [33m[2m✓[22m[39m should get transactions from testnet [33m 1440[2mms[22m[39m
+ [31m❯[39m tests/integration/get_account_balance.test.ts [2m([22m[2m2 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 11195[2mms[22m[39m
+[31m     [31m×[31m should fetch account balance from testnet[39m[32m 8[2mms[22m[39m
+[31m     [31m×[31m should return error for non-existent account[39m[33m 1554[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 9 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/integration/decode_ledger_entry.test.ts[2m > [22mdecode_ledger_entry (Integration)[2m > [22mshould decode a real ledger entry from testnet
+[31m[1mError[22m: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".[39m
+[36m [2m❯[22m tests/integration/decode_ledger_entry.test.ts:[2m14:3[22m[39m
+    [90m 12|[39m
+    [90m 13|[39m [34mdescribeIfIntegration[39m([32m'decode_ledger_entry (Integration)'[39m[33m,[39m () [33m=>[39m {
+    [90m 14|[39m   [34mit[39m([32m'should decode a real ledger entry from testnet'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m   |[39m   [31m^[39m
+    [90m 15|[39m     [90m// Fetch a real account from testnet to get its XDR[39m
+    [90m 16|[39m     const response = await fetch(`${TESTNET_HORIZON_URL}/accounts?limi…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/fetch_contract_spec.test.ts[2m > [22mfetch_contract_spec (Integration)[2m > [22mshould fetch USDC contract spec from testnet
+[31m[1mError[22m: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".[39m
+[36m [2m❯[22m tests/integration/fetch_contract_spec.test.ts:[2m17:3[22m[39m
+    [90m 15|[39m
+    [90m 16|[39m [34mdescribeIfIntegration[39m([32m'fetch_contract_spec (Integration)'[39m[33m,[39m () [33m=>[39m {
+    [90m 17|[39m   [34mit[39m([32m'should fetch USDC contract spec from testnet'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m   |[39m   [31m^[39m
+    [90m 18|[39m     [90m// Use Soroban RPC to get the contract WASM[39m
+    [90m 19|[39m     [35mconst[39m response [33m=[39m [35mawait[39m [34mfetch[39m([33mTESTNET_SOROBAN_RPC_URL[39m[33m,[39m {
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/fetch_contract_spec.test.ts[2m > [22mfetch_contract_spec (Integration)[2m > [22mshould verify USDC contract exists on testnet
+[31m[1mTypeError[22m: fetch failed[39m
+[36m [2m❯[22m tests/integration/fetch_contract_spec.test.ts:[2m49:22[22m[39m
+    [90m 47|[39m   [34mit[39m([32m'should verify USDC contract exists on testnet'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m 48|[39m     [90m// Get ledger entries for the contract[39m
+    [90m 49|[39m     [35mconst[39m response [33m=[39m [35mawait[39m [34mfetch[39m([33mTESTNET_SOROBAN_RPC_URL[39m[33m,[39m {
+    [90m   |[39m                      [31m^[39m
+    [90m 50|[39m       method[33m:[39m [32m'POST'[39m[33m,[39m
+    [90m 51|[39m       headers[33m:[39m { [32m'Content-Type'[39m[33m:[39m [32m'application/json'[39m }[33m,[39m
+
+{
+  stack: 'AggregateError: \n' +
+    '    at internalConnectMultiple (node:net:1139:18)\n' +
+    '    at internalConnectMultiple (node:net:1215:5)\n' +
+    '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+    '    at listOnTimeout (node:internal/timers:596:11)\n' +
+    '    at processTimers (node:internal/timers:529:7)',
+  errors: [
+    {
+      stack: 'Error: connect ETIMEDOUT 104.18.6.25:443\n' +
+        '    at createConnectionError (node:net:1675:14)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ETIMEDOUT 104.18.6.25:443',
+      errno: -110,
+      code: 'ETIMEDOUT',
+      syscall: 'connect',
+      address: '104.18.6.25',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)\n' +
+        '    at internalConnectMultiple (node:net:1211:16)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)',
+      errno: -101,
+      code: 'ENETUNREACH',
+      syscall: 'connect',
+      address: '2606:4700::6812:619',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ETIMEDOUT 104.18.7.25:443\n' +
+        '    at createConnectionError (node:net:1675:14)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ETIMEDOUT 104.18.7.25:443',
+      errno: -110,
+      code: 'ETIMEDOUT',
+      syscall: 'connect',
+      address: '104.18.7.25',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)\n' +
+        '    at internalConnectMultiple (node:net:1211:16)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)',
+      errno: -101,
+      code: 'ENETUNREACH',
+      syscall: 'connect',
+      address: '2606:4700::6812:719',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    }
+  ],
+  code: 'ETIMEDOUT',
+  constructor: 'Function<AggregateError>',
+  name: 'Caused by: AggregateError',
+  message: '',
+  toString: 'Function<toString>',
+  stacks: []
+}
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22m[39m
+[31m[1mSerialized Error:[22m[39m [90m{ errors: [ { stack: 'Error: connect ETIMEDOUT 104.18.6.25:443\n    at createConnectionError (node:net:1675:14)\n    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ETIMEDOUT 104.18.6.25:443', errno: -110, code: 'ETIMEDOUT', syscall: 'connect', address: '104.18.6.25', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)\n    at internalConnectMultiple (node:net:1211:16)\n    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)', errno: -101, code: 'ENETUNREACH', syscall: 'connect', address: '2606:4700::6812:619', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ETIMEDOUT 104.18.7.25:443\n    at createConnectionError (node:net:1675:14)\n    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ETIMEDOUT 104.18.7.25:443', errno: -110, code: 'ETIMEDOUT', syscall: 'connect', address: '104.18.7.25', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)\n    at internalConnectMultiple (node:net:1211:16)\n    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)', errno: -101, code: 'ENETUNREACH', syscall: 'connect', address: '2606:4700::6812:719', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' } ], code: 'ETIMEDOUT' }[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/get_account_balance.test.ts[2m > [22mget_account_balance (Integration)[2m > [22mshould fetch account balance from testnet
+[31m[1mPulsarValidationError[22m: Invalid input for get_account_balance[39m
+[36m [2m❯[22m getAccountBalance src/tools/get_account_balance.ts:[2m33:11[22m[39m
+    [90m 31|[39m   [35mconst[39m validatedInput [33m=[39m [33mGetAccountBalanceInputSchema[39m[33m.[39m[34msafeParse[39m(input)[33m;[39m
+    [90m 32|[39m   [35mif[39m ([33m![39mvalidatedInput[33m.[39msuccess) {
+    [90m 33|[39m     [35mthrow[39m [35mnew[39m [33mPulsarValidationError[39m(
+    [90m   |[39m           [31m^[39m
+    [90m 34|[39m       [32m"Invalid input for get_account_balance"[39m[33m,[39m
+    [90m 35|[39m       validatedInput[33m.[39merror[33m.[39m[34mformat[39m()
+[90m [2m❯[22m tests/integration/get_account_balance.test.ts:[2m29:26[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/get_account_balance.test.ts[2m > [22mget_account_balance (Integration)[2m > [22mshould return error for non-existent account
+[31m[1mAssertionError[22m: expected [Function] to throw error including 'Account not found — it may not be fun…' but got 'Bad Request'[39m
+
+Expected: [32m"[7mAccount not found — it may not be funded ye[27mt"[39m
+Received: [31m"[7mBad Reques[27mt"[39m
+
+[36m [2m❯[22m tests/integration/get_account_balance.test.ts:[2m52:8[22m[39m
+    [90m 50|[39m       account_id[33m:[39m nonExistentKey[33m,[39m
+    [90m 51|[39m       network[33m:[39m [32m'testnet'[39m
+    [90m 52|[39m     })).rejects.toThrow("Account not found — it may not be funded yet"…
+    [90m   |[39m        [31m^[39m
+    [90m 53|[39m   })[33m;[39m
+    [90m 54|[39m })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/simulate_transaction.test.ts[2m > [22msimulate_transaction (Integration)[2m > [22mshould simulate a simple payment transaction
+[31m[1mError[22m: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".[39m
+[36m [2m❯[22m tests/integration/simulate_transaction.test.ts:[2m17:3[22m[39m
+    [90m 15|[39m
+    [90m 16|[39m [34mdescribeIfIntegration[39m([32m'simulate_transaction (Integration)'[39m[33m,[39m () [33m=>[39m {
+    [90m 17|[39m   [34mit[39m([32m'should simulate a simple payment transaction'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m   |[39m   [31m^[39m
+    [90m 18|[39m     [90m// Build a simple transaction to simulate[39m
+    [90m 19|[39m     // This is a basic test that verifies the Soroban RPC simulation e…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/simulate_transaction.test.ts[2m > [22msimulate_transaction (Integration)[2m > [22mshould get network information from testnet
+[31m[1mTypeError[22m: fetch failed[39m
+[36m [2m❯[22m tests/integration/simulate_transaction.test.ts:[2m48:22[22m[39m
+    [90m 46|[39m
+    [90m 47|[39m   [34mit[39m([32m'should get network information from testnet'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m 48|[39m     [35mconst[39m response [33m=[39m [35mawait[39m [34mfetch[39m([33mTESTNET_SOROBAN_RPC_URL[39m[33m,[39m {
+    [90m   |[39m                      [31m^[39m
+    [90m 49|[39m       method[33m:[39m [32m'POST'[39m[33m,[39m
+    [90m 50|[39m       headers[33m:[39m { [32m'Content-Type'[39m[33m:[39m [32m'application/json'[39m }[33m,[39m
+
+{
+  stack: 'AggregateError: \n' +
+    '    at internalConnectMultiple (node:net:1139:18)\n' +
+    '    at internalConnectMultiple (node:net:1215:5)\n' +
+    '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+    '    at listOnTimeout (node:internal/timers:596:11)\n' +
+    '    at processTimers (node:internal/timers:529:7)',
+  errors: [
+    {
+      stack: 'Error: connect ETIMEDOUT 104.18.6.25:443\n' +
+        '    at createConnectionError (node:net:1675:14)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ETIMEDOUT 104.18.6.25:443',
+      errno: -110,
+      code: 'ETIMEDOUT',
+      syscall: 'connect',
+      address: '104.18.6.25',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)\n' +
+        '    at internalConnectMultiple (node:net:1211:16)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)',
+      errno: -101,
+      code: 'ENETUNREACH',
+      syscall: 'connect',
+      address: '2606:4700::6812:619',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ETIMEDOUT 104.18.7.25:443\n' +
+        '    at createConnectionError (node:net:1675:14)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ETIMEDOUT 104.18.7.25:443',
+      errno: -110,
+      code: 'ETIMEDOUT',
+      syscall: 'connect',
+      address: '104.18.7.25',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)\n' +
+        '    at internalConnectMultiple (node:net:1211:16)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)',
+      errno: -101,
+      code: 'ENETUNREACH',
+      syscall: 'connect',
+      address: '2606:4700::6812:719',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    }
+  ],
+  code: 'ETIMEDOUT',
+  constructor: 'Function<AggregateError>',
+  name: 'Caused by: AggregateError',
+  message: '',
+  toString: 'Function<toString>',
+  stacks: []
+}
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22m[39m
+[31m[1mSerialized Error:[22m[39m [90m{ errors: [ { stack: 'Error: connect ETIMEDOUT 104.18.6.25:443\n    at createConnectionError (node:net:1675:14)\n    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ETIMEDOUT 104.18.6.25:443', errno: -110, code: 'ETIMEDOUT', syscall: 'connect', address: '104.18.6.25', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)\n    at internalConnectMultiple (node:net:1211:16)\n    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)', errno: -101, code: 'ENETUNREACH', syscall: 'connect', address: '2606:4700::6812:619', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ETIMEDOUT 104.18.7.25:443\n    at createConnectionError (node:net:1675:14)\n    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ETIMEDOUT 104.18.7.25:443', errno: -110, code: 'ETIMEDOUT', syscall: 'connect', address: '104.18.7.25', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)\n    at internalConnectMultiple (node:net:1211:16)\n    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)', errno: -101, code: 'ENETUNREACH', syscall: 'connect', address: '2606:4700::6812:719', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' } ], code: 'ETIMEDOUT' }[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/submit_transaction.test.ts[2m > [22msubmit_transaction (Integration)[2m > [22mshould get fee stats from testnet
+[31m[1mError[22m: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".[39m
+[36m [2m❯[22m tests/integration/submit_transaction.test.ts:[2m17:3[22m[39m
+    [90m 15|[39m
+    [90m 16|[39m [34mdescribeIfIntegration[39m([32m'submit_transaction (Integration)'[39m[33m,[39m () [33m=>[39m {
+    [90m 17|[39m   [34mit[39m([32m'should get fee stats from testnet'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m   |[39m   [31m^[39m
+    [90m 18|[39m     [90m// Get fee stats from Horizon[39m
+    [90m 19|[39m     [35mconst[39m response [33m=[39m [35mawait[39m [34mfetch[39m([32m`[39m[36m${[39m[33mTESTNET_HORIZON_URL[39m[36m}[39m[32m/fee_stats`[39m)[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/integration/submit_transaction.test.ts[2m > [22msubmit_transaction (Integration)[2m > [22mshould get latest ledger from testnet
+[31m[1mTypeError[22m: fetch failed[39m
+[36m [2m❯[22m tests/integration/submit_transaction.test.ts:[2m32:22[22m[39m
+    [90m 30|[39m   [34mit[39m([32m'should get latest ledger from testnet'[39m[33m,[39m [35masync[39m () [33m=>[39m {
+    [90m 31|[39m     [90m// Get the latest ledger to verify network connectivity[39m
+    [90m 32|[39m     [35mconst[39m response [33m=[39m [35mawait[39m [34mfetch[39m([33mTESTNET_SOROBAN_RPC_URL[39m[33m,[39m {
+    [90m   |[39m                      [31m^[39m
+    [90m 33|[39m       method[33m:[39m [32m'POST'[39m[33m,[39m
+    [90m 34|[39m       headers[33m:[39m { [32m'Content-Type'[39m[33m:[39m [32m'application/json'[39m }[33m,[39m
+
+{
+  stack: 'AggregateError: \n' +
+    '    at internalConnectMultiple (node:net:1139:18)\n' +
+    '    at internalConnectMultiple (node:net:1215:5)\n' +
+    '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+    '    at listOnTimeout (node:internal/timers:596:11)\n' +
+    '    at processTimers (node:internal/timers:529:7)',
+  errors: [
+    {
+      stack: 'Error: connect ETIMEDOUT 104.18.6.25:443\n' +
+        '    at createConnectionError (node:net:1675:14)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ETIMEDOUT 104.18.6.25:443',
+      errno: -110,
+      code: 'ETIMEDOUT',
+      syscall: 'connect',
+      address: '104.18.6.25',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)\n' +
+        '    at internalConnectMultiple (node:net:1211:16)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)',
+      errno: -101,
+      code: 'ENETUNREACH',
+      syscall: 'connect',
+      address: '2606:4700::6812:619',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ETIMEDOUT 104.18.7.25:443\n' +
+        '    at createConnectionError (node:net:1675:14)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ETIMEDOUT 104.18.7.25:443',
+      errno: -110,
+      code: 'ETIMEDOUT',
+      syscall: 'connect',
+      address: '104.18.7.25',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    },
+    {
+      stack: 'Error: connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)\n' +
+        '    at internalConnectMultiple (node:net:1211:16)\n' +
+        '    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n' +
+        '    at listOnTimeout (node:internal/timers:596:11)\n' +
+        '    at processTimers (node:internal/timers:529:7)',
+      message: 'connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)',
+      errno: -101,
+      code: 'ENETUNREACH',
+      syscall: 'connect',
+      address: '2606:4700::6812:719',
+      port: 443,
+      constructor: 'Function<Error>',
+      name: 'Error',
+      toString: 'Function<toString>'
+    }
+  ],
+  code: 'ETIMEDOUT',
+  constructor: 'Function<AggregateError>',
+  name: 'Caused by: AggregateError',
+  message: '',
+  toString: 'Function<toString>',
+  stacks: []
+}
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22m[39m
+[31m[1mSerialized Error:[22m[39m [90m{ errors: [ { stack: 'Error: connect ETIMEDOUT 104.18.6.25:443\n    at createConnectionError (node:net:1675:14)\n    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ETIMEDOUT 104.18.6.25:443', errno: -110, code: 'ETIMEDOUT', syscall: 'connect', address: '104.18.6.25', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)\n    at internalConnectMultiple (node:net:1211:16)\n    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ENETUNREACH 2606:4700::6812:619:443 - Local (:::0)', errno: -101, code: 'ENETUNREACH', syscall: 'connect', address: '2606:4700::6812:619', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ETIMEDOUT 104.18.7.25:443\n    at createConnectionError (node:net:1675:14)\n    at Timeout.internalConnectMultipleTimeout (node:net:1734:38)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ETIMEDOUT 104.18.7.25:443', errno: -110, code: 'ETIMEDOUT', syscall: 'connect', address: '104.18.7.25', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' }, { stack: 'Error: connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)\n    at internalConnectMultiple (node:net:1211:16)\n    at Timeout.internalConnectMultipleTimeout (node:net:1739:5)\n    at listOnTimeout (node:internal/timers:596:11)\n    at processTimers (node:internal/timers:529:7)', message: 'connect ENETUNREACH 2606:4700::6812:719:443 - Local (:::0)', errno: -101, code: 'ENETUNREACH', syscall: 'connect', address: '2606:4700::6812:719', port: 443, constructor: 'Function<Error>', name: 'Error', toString: 'Function<toString>' } ], code: 'ETIMEDOUT' }[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m5 failed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[31m9 failed[39m[22m[2m | [22m[1m[32m2 passed[39m[22m[90m (11)[39m
+[2m   Start at [22m 13:03:58
+[2m   Duration [22m 12.32s[2m (transform 320ms, setup 0ms, import 3.20s, tests 38.18s, environment 1ms)[22m
+

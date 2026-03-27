@@ -2,17 +2,19 @@
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ListToolsRequestSchema, ErrorCode, McpError } from "@modelcontextprotocol/sdk/types.js";
+
 import { config } from "./config.js";
 import { fetchContractSpec, fetchContractSpecSchema } from "./tools/fetch_contract_spec.js";
 import { submitTransaction } from './tools/submit_transaction.js';
 import { simulateTransaction } from './tools/simulate_transaction.js';
+import { getAccountBalance } from './tools/get_account_balance.js';
 import {
   GetAccountBalanceInputSchema,
   SubmitTransactionInputSchema,
   SimulateTransactionInputSchema,
 } from './schemas/tools.js';
 import logger from './logger.js';
-import { PulsarError, PulsarErrorCode, PulsarNetworkError, PulsarValidationError } from './errors.js';
+import { PulsarError, PulsarNetworkError, PulsarValidationError } from './errors.js';
 
 /**
  * Initialize the pulsar MCP server.
@@ -44,13 +46,26 @@ class PulsarServer {
       tools: [
         {
           name: 'get_account_balance',
-          description: 'Get the current XLM and issued asset balances for a Stellar account.',
+          description: 'Get the current XLM and issued asset balances for a Stellar account. Optionally filter by asset code and/or issuer.',
           inputSchema: {
             type: 'object',
             properties: {
               account_id: {
                 type: 'string',
                 description: 'The Stellar public key (G...)',
+              },
+              asset_code: {
+                type: 'string',
+                description: 'Optional: Filter by asset code (e.g. USDC)',
+              },
+              asset_issuer: {
+                type: 'string',
+                description: 'Optional: Filter by asset issuer (G...)',
+              },
+              network: {
+                type: 'string',
+                enum: ['mainnet', 'testnet', 'futurenet', 'custom'],
+                description: 'Override the configured network for this call.',
               },
             },
             required: ['account_id'],
@@ -150,15 +165,12 @@ class PulsarServer {
             if (!parsed.success) {
               throw new PulsarValidationError(`Invalid input for get_account_balance`, parsed.error.format());
             }
-            // TODO: Implement actual get_account_balance logic
+            const result = await getAccountBalance(parsed.data);
             return {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    message: 'get_account_balance is not yet implemented',
-                    input: parsed.data,
-                  }),
+                  text: JSON.stringify(result),
                 },
               ],
             };
@@ -184,63 +196,23 @@ class PulsarServer {
             };
           }
 
+          case 'simulate_transaction': {
+            const parsed = SimulateTransactionInputSchema.safeParse(args);
+            if (!parsed.success) {
+              throw new PulsarValidationError(`Invalid input for simulate_transaction`, parsed.error.format());
+            }
+            const result = await simulateTransaction(parsed.data);
+            return {
+              content: [{ type: 'text', text: JSON.stringify(result) }],
+            };
+          }
+
           default:
             throw new McpError(ErrorCode.MethodNotFound, `Tool not found: ${name}`);
         }
       } catch (error) {
         return this.handleToolError(error, name);
       }
-      if (name === 'get_account_balance') {
-        const parsed = GetAccountBalanceInputSchema.safeParse(args);
-        if (!parsed.success) {
-          throw new Error(`Invalid input for get_account_balance: ${JSON.stringify(parsed.error.format())}`);
-        }
-
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({
-                message: 'get_account_balance is not yet implemented',
-                input: parsed.data,
-              }),
-            },
-          ],
-        };
-      }
-
-      if (name === "fetch_contract_spec") {
-        const parsed = fetchContractSpecSchema.safeParse(args);
-        if (!parsed.success) {
-          throw new Error(`Invalid input: ${JSON.stringify(parsed.error.format())}`);
-        }
-        const result = await fetchContractSpec(parsed.data);
-        return { content: [{ type: "text", text: JSON.stringify(result) }] };
-      }
-
-      if (name === 'submit_transaction') {
-        const parsed = SubmitTransactionInputSchema.safeParse(args);
-        if (!parsed.success) {
-          throw new Error(`Invalid input for submit_transaction: ${JSON.stringify(parsed.error.format())}`);
-        }
-        const result = await submitTransaction(parsed.data);
-        return {
-          content: [{ type: 'text', text: JSON.stringify(result) }],
-        };
-      }
-
-      if (name === 'simulate_transaction') {
-        const parsed = SimulateTransactionInputSchema.safeParse(args);
-        if (!parsed.success) {
-          throw new Error(`Invalid input for simulate_transaction: ${JSON.stringify(parsed.error.format())}`);
-        }
-        const result = await simulateTransaction(parsed.data);
-        return {
-          content: [{ type: 'text', text: JSON.stringify(result) }],
-        };
-      }
-
-      throw new Error(`Tool not found: ${name}`);
     });
   }
 

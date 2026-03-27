@@ -1,0 +1,142 @@
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/config.ts
+  29:3  warning  Unexpected console statement  no-console
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/errors.ts
+  13:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  22:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  29:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  36:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/index.ts
+  4:1  error  There should be at least one empty line between import groups  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/schemas/index.test.ts
+  6:1  error  There should be at least one empty line between import groups  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/schemas/tools.test.ts
+   6:1  error  There should be at least one empty line between import groups  import/order
+  91:9  error  'validPubKey' is assigned a value but never used               @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/schemas/tools.ts
+  9:1  error  There should be at least one empty line between import groups  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/services/horizon.ts
+  1:1  error  There should be at least one empty line between import groups  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/services/soroban-rpc.ts
+  1:1  error  There should be at least one empty line between import groups  import/order
+  2:1  error  There should be no empty line within import group              import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/services/stellar-cli.ts
+  2:1  error  There should be at least one empty line between import groups  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/fetch_contract_spec.ts
+  1:1  error  There should be at least one empty line between import groups  import/order
+  5:1  error  There should be no empty line within import group              import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/get_account_balance.ts
+  44:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  64:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/simulate_transaction.ts
+    1:1   error    There should be at least one empty line between import groups  import/order
+   14:25  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   78:34  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   98:69  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   99:71  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  105:49  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  107:33  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  107:80  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  112:33  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  112:86  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  118:32  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  121:47  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/submit_transaction.test.ts
+   1:48  error  'afterEach' is defined but never used                                          @typescript-eslint/no-unused-vars
+  69:1   error  There should be at least one empty line between import groups                  import/order
+  70:1   error  `../config.js` import should occur before import of `./submit_transaction.js`  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/src/tools/submit_transaction.ts
+   9:1   error  There should be at least one empty line between import groups  import/order
+   9:10  error  'z' is defined but never used                                  @typescript-eslint/no-unused-vars
+  13:3   error  'SubmitTransactionInput' is defined but never used             @typescript-eslint/no-unused-vars
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/decode_ledger_entry.test.ts
+   1:10  error  'describe' is defined but never used                           @typescript-eslint/no-unused-vars
+   3:1   error  There should be at least one empty line between import groups  import/order
+  16:28  error  'fetch' is not defined                                         no-undef
+  25:34  error  'fetch' is not defined                                         no-undef
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/fetch_contract_spec.test.ts
+   1:10  error    'describe' is defined but never used  @typescript-eslint/no-unused-vars
+  19:28  error    'fetch' is not defined                no-undef
+  43:7   warning  Unexpected console statement          no-console
+  49:28  error    'fetch' is not defined                no-undef
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/get_account_balance.test.ts
+   1:1   error    There should be at least one empty line between import groups  import/order
+   1:10  error    'describe' is defined but never used                           @typescript-eslint/no-unused-vars
+   2:1   error    There should be at least one empty line between import groups  import/order
+  24:7   warning  Unexpected console statement                                   no-console
+  32:12  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  40:11  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/setup.ts
+  41:26  error    'fetch' is not defined        no-undef
+  46:7   warning  Unexpected console statement  no-console
+  52:3   warning  Unexpected console statement  no-console
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/simulate_transaction.test.ts
+   1:10  error  'describe' is defined but never used                 @typescript-eslint/no-unused-vars
+   6:3   error  'TEST_ACCOUNT_PUBLIC_KEY' is defined but never used  @typescript-eslint/no-unused-vars
+  21:28  error  'fetch' is not defined                               no-undef
+  48:28  error  'fetch' is not defined                               no-undef
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/integration/submit_transaction.test.ts
+   1:10  error  'describe' is defined but never used  @typescript-eslint/no-unused-vars
+  19:28  error  'fetch' is not defined                no-undef
+  32:28  error  'fetch' is not defined                no-undef
+  61:28  error  'fetch' is not defined                no-undef
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/decode_ledger_entry.test.ts
+  1:1  error  There should be at least one empty line between import groups  import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/fetch_contract_spec.test.ts
+  1:1  error  There should be at least one empty line between import groups  import/order
+  2:1  error  There should be no empty line within import group              import/order
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/get_account_balance.test.ts
+    1:1   error    There should be at least one empty line between import groups  import/order
+    4:10  error    'PulsarNetworkError' is defined but never used                 @typescript-eslint/no-unused-vars
+   12:19  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   39:77  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   62:12  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   83:12  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   91:15  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+   99:17  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+  108:15  warning  Unexpected any. Specify a different type                       @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/simulate_transaction.test.ts
+   1:1   error    There should be at least one empty line between import groups                                                        import/order
+   2:1   error    There should be at least one empty line between import groups                                                        import/order
+   3:1   error    `@stellar/stellar-sdk` import should occur before import of `../../src/tools/simulate_transaction.js`                import/order
+  11:17  warning  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  28:19  warning  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  59:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  77:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  79:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  94:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  96:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  98:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  99:24  warning  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+
+/home/edohwares/Desktop/Room/drips/pulsar/tests/unit/xdr.test.ts
+  1:1  error  There should be at least one empty line between import groups  import/order
+  9:1  error  `child_process` import should occur before import of `vitest`  import/order
+
+✖ 88 problems (53 errors, 35 warnings)
+  24 errors and 0 warnings potentially fixable with the `--fix` option.
+
